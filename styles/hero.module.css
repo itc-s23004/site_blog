@@ -17,3 +17,11 @@
   font-size: var(--small-heading2);
 }
 
+.image {
+width: 100%;
+}
+@media (min-width: 768px) {
+.image {
+width: 50%;
+}
+}
