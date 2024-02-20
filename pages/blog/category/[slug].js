@@ -4,7 +4,7 @@ import Container from 'components/container'
 import PostHeader from 'components/post-header'
 import Posts from 'components/posts'
 import { getPlaiceholder } from 'plaiceholder'
-
+import { getImageBuffer } from 'lib/getImageBuffer'
 import { eyecatchLocal } from 'lib/constants'
 
 const Category = ({ name, posts }) => {
@@ -40,7 +40,8 @@ const getStaticProps = async context => {
     if (!post.hasOwnProperty('eyecatch')) {
       post.eyecatch = eyecatchLocal
     }
-    const { base64 } = await getPlaiceholder(post.eyecatch.url)
+    const imageBuffer = await getImageBuffer(post.eyecatch.url)
+    const { base64 } = await getPlaiceholder(imageBuffer)
     post.eyecatch.blurDataURL = base64
   }
   return {
