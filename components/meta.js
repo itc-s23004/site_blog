@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { siteMeta } from 'lib/constans'
+import { siteMeta } from 'lib/constants'
 
 const {
   siteTitle,

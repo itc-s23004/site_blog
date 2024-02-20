@@ -16,6 +16,7 @@ import PostCategories from 'components/post-categories'
 import Image from 'next/legacy/image'
 import { getPlaiceholder } from 'plaiceholder'
 import { eyecatchLocal } from 'lib/constants'
+import { getImageBuffer } from 'lib/getImageBuffer'
 
 const Post = ({
   title,
@@ -90,7 +91,8 @@ const getStaticProps = async context => {
   const description = extractText(post.content)
   const eyecatch = post.eyecatch ?? eyecatchLocal
 
-  const { base64 } = await getPlaiceholder(eyecatch.url)
+  const imageBuffer = await getImageBuffer(eyecatch.url)
+  const { base64 } = await getPlaiceholder(imageBuffer)
   eyecatch.blurDataURL = base64
 
   const allSlugs = await getAllSlugs()
